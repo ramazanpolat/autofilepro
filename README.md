@@ -1,5 +1,14 @@
 # autofilepro
-Automatically processes files
+Automatically processes files. Simple extract, transform and Do(x) program.
+
+* Watches a directory for new files
+* Whenever a new file is detected, processes it
+
+Currently, 2 phases are defined: "validate phase" and "transform phase".
+Each phase calls a processor and there are two processes, ``validate_file`` and ``transform_file``in ``processor.py`` file.
+
+If you put a CSV file in ``input_dir``, **validate phase** will pick it and validate.
+Then ``transform_file`` gets the validated output and transforms.   
 
 ## Step 1
 
