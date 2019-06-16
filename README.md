@@ -70,11 +70,13 @@ If a new file is present then we process new file name with `send` parameter(sen
 So in this example, we only show file names with `echo`. This is also default behavior.
 
 ```
-$ python dirwatch.py --dir=C:\somediretory --filter="*.txt" --send="echo %s" --interval=
+$ python dirwatch.py --dir=C:\somediretory --filter="*.txt" --send="echo %s" --interval=5
 
 ```
+### CLI parameters
 
-* Default `dir` = `C:\somediretory`
-* Default `filter` = `*.*`
-* Default `send` = `echo %s`
+* `dir`: the directory to start watching. Default = `.` (current directory)
+* `filter`: File filter. Only new files that matches this filter will be processed. Default = `*.*`  
+* `send`: Command to utilize new files. Default = `echo %s` (shows newly added file name in console)
+* `interval`: Directory watching interval. `DirWatch` checks the directory every interval. Default = `1` second 
  
