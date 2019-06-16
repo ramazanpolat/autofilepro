@@ -70,7 +70,7 @@ If a new file is present then we process new file name with `send` parameter(sen
 So in this example, we only show file names with `echo`. This is also default behavior.
 
 ```
-$ python dirwatch.py --dir=C:\somediretory --filter="*.txt" --send="echo %s"
+$ python dirwatch.py --dir=C:\somediretory --filter="*.txt" --send="echo %s" --interval=
 
 ```
 

@@ -21,8 +21,8 @@ def run_command(file_name):
 
 
 class DirWatch:
-    def __init__(self, name, directory, file_filter, period=1):
-        self.period = period
+    def __init__(self, name, directory, file_filter, interval=1):
+        self.interval = interval
         self.name = name
         self.file_filter = file_filter
         self.directory = directory
@@ -47,7 +47,7 @@ class DirWatch:
 
     def start_watching(self, callback=None):
         while True:
-            sleep(self.period)
+            sleep(self.interval)
             added_files = self.added_files()
             if added_files:
                 if callback:
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     parser.add_argument('--dir', dest='dir', metavar='-D', type=str, help='Directory to watch', default='.')
     parser.add_argument('--filter', dest='filter', metavar='-F', type=str, help='File filter', default='*.*')
     parser.add_argument('--send', dest='send', metavar='-C', type=str, help='send', default='echo %s')
-    parser.add_argument('--period', dest='period', metavar='-P', type=int, help='period', default=1)
+    parser.add_argument('--interval', dest='interval', metavar='-I', type=int, help='interval', default=1)
 
     args = parser.parse_args()
     # print("args.send:", args.send)
@@ -71,7 +71,7 @@ if __name__ == '__main__':
     # print("args.period:", args.period)
 
     command = args.send
-    dw = DirWatch(name="File", directory=args.dir, file_filter=args.filter, period=args.period)
+    dw = DirWatch(name="File", directory=args.dir, file_filter=args.filter, interval=args.interval)
     dw.get_files()
     dw.start_watching_thread(callback=run_command)
     while True:
